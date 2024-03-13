@@ -28,20 +28,18 @@ jobs:
       - name: configure and make
         run: |
           echo build with \"configure\"
+          bmake distclean
           sh configure
           bmake -DRELEASE
-          bmake clean
-          rm -f config.status Makefile.cfg config.h config.log
           echo build with \"configure --without-stb-image\"
+          bmake distclean
           sh configure --without-stb-image
           bmake -DRELEASE
-          bmake clean
-          rm -f config.status Makefile.cfg config.h config.log
           echo build with \"configure --without-mbedtls\"
+          bmake distclean
           sh configure --without-mbedtls
           bmake -DRELEASE
-          bmake clean
-          rm -f config.status Makefile.cfg config.h config.log
+          bmake distclean
           echo build with \"configure --enable-twitter\"
           sh configure --enable-twitter
           bmake -DRELEASE
@@ -71,21 +69,19 @@ jobs:
             export PATH=/usr/pkg/gcc10/bin:${PATH}
             export CC=/usr/pkg/gcc10/bin/gcc CXX=/usr/pkg/gcc10/bin/g++
             echo build with \"configure\"
+            make distclean
             sh configure
             make -DRELEASE
-            make clean
-            rm -f config.status Makefile.cfg config.h config.log
             echo build with \"configure --without-stb-image\"
+            make distclean
             sh configure --without-stb-image
             make -DRELEASE
-            make clean
-            rm -f config.status Makefile.cfg config.h config.log
             echo build with \"configure --without-mbedtls\"
+            make distclean
             sh configure --without-mbedtls
             make -DRELEASE
-            make clean
-            rm -f config.status Makefile.cfg config.h config.log
             echo build with \"configure --enable-twitter\"
+            make distclean
             sh configure --enable-twitter
             make -DRELEASE
 
@@ -109,20 +105,17 @@ jobs:
 
           run: |
             echo build with \"configure\"
+            make distclean
             sh configure
             make -DRELEASE
-            make clean
-            rm -f config.status Makefile.cfg config.h config.log
             echo build with \"configure --without-stb-image\"
             sh configure --without-stb-image
             make -DRELEASE
-            make clean
-            rm -f config.status Makefile.cfg config.h config.log
             echo build with \"configure --without-mbedtls\"
+            make distclean
             sh configure --without-mbedtls
             make -DRELEASE
-            make clean
-            rm -f config.status Makefile.cfg config.h config.log
             echo build with \"configure --enable-twitter\"
+            make distclean
             sh configure --enable-twitter
             make -DRELEASE
