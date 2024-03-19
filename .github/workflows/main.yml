@@ -130,6 +130,7 @@ jobs:
       - name: Install packages and run configure and make (on the FreeBSD VM)
         uses: vmactions/freebsd-vm@v1
         with:
+          release: "12.4"
           usesh: true
           copyback: false
           prepare: |
