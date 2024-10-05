@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        container: [ "ubuntu:latest", "ubuntu:22.04", "debian:12", "debian:11", "archlinux:base" ]
+        container: [ "ubuntu:latest", "ubuntu:22.04", "debian:12", "debian:11", "archlinux:base", "opensuse/leap", "fedora:39", "fedora:40" ]
 
     runs-on: ubuntu-latest
 
@@ -29,6 +29,15 @@ jobs:
             ;;
           archlinux*)
             pacman -Syyu --noconfirm base-devel bmake libbsd libwebp openssl
+            ;;
+          opensuse*)
+            zypper update -y
+            zypper install -y gzip tar # for actions/checkout@v4
+            zypper install -y gcc bmake pkg-config libbsd-devel libwebp-devel libopenssl-devel
+            ;;
+          fedora*)
+            dnf update -y
+            dnf install -y gcc bmake pkgconf-pkg-config libbsd-devel libwebp-devel openssl-devel
             ;;
           esac
 
